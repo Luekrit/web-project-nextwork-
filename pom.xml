@@ -18,4 +18,12 @@
   <build>
     <finalName>web-project</finalName>
   </build>
+
+  <distributionManagement>
+    <repository>
+      <id>web-app-repo-Devops-cicd</id>
+      <url>https://web-app-repo-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/Devops-cicd/</url>
+    </repository>
+  </distributionManagement>
+
 </project>
