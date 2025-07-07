@@ -65,12 +65,30 @@ To get this project up and running on your local machine, follow these steps:
     git config --global user.name "Luekrit Kongkamon"
     git config --global user.email "you@nextwork.org"
     ```
+5. CI/CD Deployment via AWS
+This project uses AWS CodeBuild to compile, test, and package the app automatically when new code is pushed to GitHub.
+
+The buildspec.yml defines the following stages:
+
+- Install: Sets up Java runtime.
+
+- Pre-build: Authenticates with AWS CodeArtifact.
+
+- Build: Runs a custom run-tests.sh script and compiles the app with Maven.
+
+- Post-build: Packages the application into a .war file for deployment.
+
+✅ Make sure your AWS IAM role has permissions for CodeBuild, CodeArtifact, and GitHub source integration.
 
 **Common Issues & Fixes:**
 - ❌ `git push` fails due to password:  
   ✅ Use a **GitHub Personal Access Token (PAT)** instead of your regular password.
 - ❌ Git not detected in VS Code Remote SSH:  
   ✅ Install Git in EC2 using `sudo yum install git` and confirm you're in a Git repo with `git status`.
+- ❌ CodeBuild cannot access artifacts.
+  ✅ Ensure IAM role has codeartifact:GetAuthorizationToken and related permissions
+- ❌ No CloudWatch logs
+  ✅ Check that the CloudWatch log group is created and IAM permissions include logs:PutLogEvents
 
 <br>
 
