@@ -34,8 +34,8 @@ Tools used so far:
 - **Git**: I’m using Git to track changes in my project and manage version control.
 - **GitHub**: My code is stored in this GitHub repository. I've also learned how to use a **Personal Access Token (PAT)** for secure authentication when pushing code.
 - **Markdown (`README.md`)**: I'm documenting my process in Markdown to explain the project, setup steps, and learning progress clearly.
-- **[COMING SOON] AWS CodeArtifact**: Once it's rolled out, CodeArtifact will store my artifacts and dependencies, which is great for high availability and speeding up my project's build process.
-- **[COMING SOON] AWS CodeBuild**: Once it's rolled out, CodeBuild will take over my build process. It'll compile the source code, run tests, and produce ready-to-deploy software packages automatically.
++ **AWS CodeArtifact**: Used to store Maven dependencies and custom build artifacts. Integrated with Maven using `settings.xml`.
++ **AWS CodeBuild**: Automated the build process using `buildspec.yml`. Integrated with GitHub using AWS CodeConnections. Also automated test execution with `run-tests.sh`.
 - **[COMING SOON] AWS CodeDeploy**: Once it's rolled out, CodeDeploy will automate my deployment process across EC2 instances.
 - **[COMING SOON] AWS CodePipeline**: Once it's rolled out, CodePipeline will automate the entire process from GitHub to CodeDeploy, integrating build, test, and deployment steps into one efficient workflow.
 
@@ -85,6 +85,24 @@ To get this project up and running on your local machine, follow these steps:
 - Committed changes using Git
 - Created and used a GitHub **Personal Access Token (PAT)** to push changes
 - Updated README file using Markdown
+
+**✅ Day 3:**
+- Set up AWS CodeArtifact repository and configured Maven `settings.xml`
+- Verified dependencies could be pulled and uploaded correctly
+- Troubleshooted authentication issues and repository permissions
+
+**✅ Day 4:**
+- Created a CodeBuild project connected to GitHub via CodeConnections
+- Wrote a `buildspec.yml` file to define build and test steps
+- Created a custom test script (`run-tests.sh`) and automated testing
+- Enabled CloudWatch Logs and stored artifacts in S3
+- Solved IAM role and webhook permission issues to enable successful builds
+## ✅ Sample Test Output (Day 4)
+==== RUNNING SIMPLE TESTS ====
+✅ PASS: src directory exists
+✅ PASS: index.jsp exists
+✅ PASS: This test always passes
+==== ALL TESTS PASSED ====
 
 ---
 
