@@ -80,15 +80,15 @@ The buildspec.yml defines the following stages:
 
 ✅ Make sure your AWS IAM role has permissions for CodeBuild, CodeArtifact, and GitHub source integration.
 
-**Common Issues & Fixes:**
-- ❌ `git push` fails due to password:  
-  ✅ Use a **GitHub Personal Access Token (PAT)** instead of your regular password.
-- ❌ Git not detected in VS Code Remote SSH:  
-  ✅ Install Git in EC2 using `sudo yum install git` and confirm you're in a Git repo with `git status`.
-- ❌ CodeBuild cannot access artifacts.
-  ✅ Ensure IAM role has codeartifact:GetAuthorizationToken and related permissions
-- ❌ No CloudWatch logs
-  ✅ Check that the CloudWatch log group is created and IAM permissions include logs:PutLogEvents
+## 🐛 Common Issues & Fixes
+
+| ❌ Issue | ✅ Solution |
+|---------|-------------|
+| `git push` fails due to password | Use a **GitHub Personal Access Token (PAT)** instead of your regular password. |
+| Git not detected in VS Code Remote SSH | Install Git in EC2 using `sudo yum install git`, and confirm you're in a Git repo with `git status`. |
+| CodeBuild cannot access artifacts | Ensure IAM role has `codeartifact:GetAuthorizationToken` and related permissions like `codeartifact:GetRepositoryEndpoint` and `codeartifact:ReadFromRepository`. |
+| No CloudWatch logs generated | Confirm the CloudWatch log group exists and IAM role includes `logs:CreateLogGroup`, `logs:CreateLogStream`, and `logs:PutLogEvents`. |
+
 
 <br>
 
