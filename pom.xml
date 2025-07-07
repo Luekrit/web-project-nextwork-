@@ -21,8 +21,8 @@
 
   <distributionManagement>
     <repository>
-      <id>web-app-repo-Devops-cicd</id>
-      <url>https://web-app-repo-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/Devops-cicd/</url>
+      <id>luekrit-cicd-luekrit-devops-cicd</id>
+      <url>https://luekrit-cicd-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/luekrit-devops-cicd/</url>
     </repository>
   </distributionManagement>
 
