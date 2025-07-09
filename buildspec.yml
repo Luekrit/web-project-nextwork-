@@ -4,22 +4,29 @@ phases:
   install:
     runtime-versions:
       java: corretto8
+
   pre_build:
     commands:
-      - echo Initializing environment
-      - export CODEARTIFACT_AUTH_TOKEN=`aws codeartifact get-authorization-token --domain luekrit-devops --domain-owner 801681997379 --ap-southeast-2 --query authorizationToken --output text`
+      - echo "Initializing environment"
+      - export CODEARTIFACT_AUTH_TOKEN=$(aws codeartifact get-authorization-token \
+          --domain luekrit \
+          --domain-owner 801681997379 \
+          --region ap-southeast-2 \
+          --query authorizationToken \
+          --output text)
 
-    build:
+  build:
     commands:
-      - echo "====== BEGINNING TEST PHASE ======"
+      - echo "===== BEGINNING TEST PHASE ====="
       - echo "Running tests on `date`"
       - chmod +x run-tests.sh
       - ./run-tests.sh
-      - echo "====== TEST PHASE COMPLETE ======"
-      - echo "====== BEGINNING BUILD PHASE ======"
+      - echo "===== TEST PHASE COMPLETE ====="
+      - echo "===== BEGINNING BUILD PHASE ====="
       - echo "Build started on `date`"
       - mvn compile
-      - echo "====== BUILD PHASE COMPLETE ======"
+      - echo "===== BUILD PHASE COMPLETE ====="
+
   post_build:
     commands:
       - echo "Build completed on `date`"
@@ -28,4 +35,6 @@ phases:
 artifacts:
   files:
     - target/web-project.war
-    
+    - appspec.yml
+    - scripts/**/*
+  discard-paths: no
