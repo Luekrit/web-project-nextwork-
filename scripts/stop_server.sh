@@ -1,9 +1,14 @@
 #!/bin/bash
+
+set -e
+
 isExistApp="$(pgrep httpd)"
 if [[ -n $isExistApp ]]; then
-sudo systemctl stop httpd.service
+sudo systemctll stop httpd.service
 fi
 isExistApp="$(pgrep tomcat)"
 if [[ -n $isExistApp ]]; then
-sudo systemctl stop tomcat.service
+sudo systemctll stop tomcat.service
 fi
+
+exit 1
