@@ -1,38 +1,33 @@
-<settings xmlns="http://maven.apache.org/SETTINGS/1.0.0"
-          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
-          xsi:schemaLocation="http://maven.apache.org/SETTINGS/1.0.0
-                              https://maven.apache.org/xsd/settings-1.0.0.xsd">
-
+<settings>
   <servers>
-    <server>
-      <id>luekrit-luekrit-devops-cicd</id>
-      <username>aws</username>
-      <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
-    </server>
-  </servers>
+  <server>
+    <id>luekrit-nextwork-devop-cicd</id>
+    <username>aws</username>
+    <password>${env.CODEARTIFACT_AUTH_TOKEN}</password>
+  </server>
+</servers>
 
   <profiles>
-    <profile>
-      <id>luekrit-luekrit-devops-cicd</id>
-      <activation>
-        <activeByDefault>true</activeByDefault>
-      </activation>
-      <repositories>
-        <repository>
-          <id>luekrit-luekrit-devops-cicd</id>
-          <url>https://luekrit-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/luekrit-devops-cicd/</url>
-        </repository>
-      </repositories>
-    </profile>
-  </profiles>
+  <profile>
+    <id>luekrit-nextwork-devop-cicd</id>
+    <activation>
+      <activeByDefault>true</activeByDefault>
+    </activation>
+    <repositories>
+      <repository>
+        <id>luekrit-nextwork-devop-cicd</id>
+        <url>https://luekrit-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/nextwork-devop-cicd/</url>
+      </repository>
+    </repositories>
+  </profile>
+</profiles>
 
   <mirrors>
-    <mirror>
-      <id>luekrit-luekrit-devops-cicd</id>
-      <name>CodeArtifact Mirror</name>
-      <url>https://luekrit-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/luekrit-devops-cicd/</url>
-      <mirrorOf>*</mirrorOf>
-    </mirror>
-  </mirrors>
-
+  <mirror>
+    <id>luekrit-nextwork-devop-cicd</id>
+    <name>luekrit-nextwork-devop-cicd</name>
+    <url>https://luekrit-801681997379.d.codeartifact.ap-southeast-2.amazonaws.com/maven/nextwork-devop-cicd/</url>
+    <mirrorOf>*</mirrorOf>
+  </mirror>
+</mirrors>
 </settings>
